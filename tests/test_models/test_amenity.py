@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Defines unittests for models/amenity.py.
+
 Unittest classes:
     TestAmenity_instantiation
     TestAmenity_save
@@ -18,7 +19,6 @@ class TestAmenity_instantiation(unittest.TestCase):
 
     def test_no_args_instantiates(self):
         self.assertEqual(Amenity, type(Amenity()))
-
 
     def test_new_instance_stored_in_objects(self):
         self.assertIn(Amenity(), models.storage.all().values())
@@ -95,7 +95,6 @@ class TestAmenity_save(unittest.TestCase):
         except IOError:
             pass
 
-
     def tearDown(self):
         try:
             os.remove("file.json")
@@ -171,7 +170,7 @@ class TestAmenity_to_dict(unittest.TestCase):
         am.created_at = am.updated_at = dt
         tdict = {
             'id': '123456',
-            '__class__': 'Amenity'
+            '__class__': 'Amenity',
             'created_at': dt.isoformat(),
             'updated_at': dt.isoformat(),
         }

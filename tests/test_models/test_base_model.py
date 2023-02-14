@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Defines unittests for models/base_model.py.
+
 Unittest classes:
     TestBaseModel_instantiation
     TestBaseModel_save
@@ -92,11 +93,10 @@ class TestBaseModel_save(unittest.TestCase):
     def setUp(self):
         try:
             os.rename("file.json", "tmp")
-        except OError:
-            pas
+        except IOError:
+            pass
 
     @classmethod
-
     def tearDown(self):
         try:
             os.remove("file.json")
@@ -107,17 +107,17 @@ class TestBaseModel_save(unittest.TestCase):
         except IOError:
             pass
 
-    def test_one_save(self):        bm = BaseModel()
+    def test_one_save(self):
+        bm = BaseModel()
         sleep(0.05)
         first_updated_at = bm.updated_at
         bm.save()
         self.assertLess(first_updated_at, bm.updated_at)
 
-
     def test_two_saves(self):
         bm = BaseModel()
         sleep(0.05)
-        first_updated_at = bm.updated_a
+        first_updated_at = bm.updated_at
         bm.save()
         second_updated_at = bm.updated_at
         self.assertLess(first_updated_at, second_updated_at)
@@ -177,7 +177,6 @@ class TestBaseModel_to_dict(unittest.TestCase):
             'updated_at': dt.isoformat()
         }
         self.assertDictEqual(bm.to_dict(), tdict)
-
 
     def test_contrast_to_dict_dunder_dict(self):
         bm = BaseModel()
