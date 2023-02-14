@@ -14,8 +14,7 @@ article {
   margin: 20px;
   display: inline-block;
   min-height: 250px;
- vertical-align: top;
-
+  vertical-align: top;
 }
 article h2 {
   font-size: 30px;
